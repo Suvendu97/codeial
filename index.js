@@ -3,6 +3,7 @@ const app = express();
 const port = 8000;
 
 //use express router
+//any request comes in, it will send that to routes index.js
 app.use('/',require('./routes'));
 
 app.listen(port, function(err) {
