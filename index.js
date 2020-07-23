@@ -3,8 +3,13 @@ const app = express();
 const port = 8000;
 const expressLayouts = require('express-ejs-layouts');
 
+//import mongoose.js to use the mongoDB database
+const db = require('./config/mongoose');
+
 //use static folder(which is assets in this case)
 app.use(express.static('./assets'));
+
+
 app.use(expressLayouts);
 //extract style and script from sub pages into the layout
 app.set('layout extractStyles', true);
