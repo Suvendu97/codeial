@@ -6,6 +6,12 @@
     </head>
 
     <body>
-        <h1>Codeial Users page / <%= title %></h1>
+        <!-- importing header using ejs (_header.ejs file in same folder) -->
+        <%- include('_header'); -%>
+
+        <h1>Codeial/ Users page / <%= title %></h1>
+
+        <!-- importing footer using ejs (_footer.ejs file in same folder) -->
+        <%- include('_footer'); -%>
     </body>
 </html>
