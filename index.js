@@ -6,6 +6,9 @@ const expressLayouts = require('express-ejs-layouts');
 //use static folder(which is assets in this case)
 app.use(express.static('./assets'));
 app.use(expressLayouts);
+//extract style and script from sub pages into the layout
+app.set('layout extractStyles', true);
+app.set('layout extractScripts', true);
 
 //use express router
 //any request comes in, it will send that to routes index.js

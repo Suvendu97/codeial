@@ -5,6 +5,8 @@
         </title>
         <!-- link layout.css file in assets folder -->
         <link rel="stylesheet" href="/css/layout.css">
+        <!-- automatically placing the founded styles here -->
+        <%- style %>
     </head>
 
     <body>
@@ -15,5 +17,9 @@
 
         <!-- importing footer using ejs (_footer.ejs file in same folder) -->
         <%- include('_footer'); -%>
+
+        <!-- automatically placing the founded scripts here -->
+        <%- script %>
+
     </body>
 </html>
