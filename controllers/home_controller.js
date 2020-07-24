@@ -1,4 +1,3 @@
-
 //exports home function which renders a view call home using ejs
 module.exports.home = function(req, res) {
     console.log(req.cookies);
