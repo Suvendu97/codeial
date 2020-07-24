@@ -1,11 +1,17 @@
 // requiring express library
 const express = require('express');
+
+const cookieParser = require('cookie-parser');
 const app = express();
 const port = 8000;
 const expressLayouts = require('express-ejs-layouts');
 
 //import mongoose.js to use the mongoDB database
 const db = require('./config/mongoose');
+
+app.use(express.urlencoded());
+
+app.use(cookieParser());
 
 //use static folder(which is assets in this case)
 app.use(express.static('./assets'));
