@@ -8,6 +8,7 @@ module.exports.profile = function(req, res) {
     if(req.cookies.user_id) {
         User.findById(req.cookies.user_id, function(err, user) {
             if(user) {
+                //if user is found send the user to the user page (views-> user.ejs)
                 return res.render('users', {
                     title : "User Profile",
                     user: user
@@ -22,7 +23,7 @@ module.exports.profile = function(req, res) {
     }
 }
 
-//render the sign up page
+//render the sign up page when SignUp method called
 module.exports.signUp = function(req, res) {
     return res.render('user_sign_up', {
         title: "Codeial | Sign Up"
