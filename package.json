@@ -21,5 +21,14 @@
     "mongoose": "^5.9.25",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Suvendu97/codeile.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Suvendu97/codeile/issues"
+  },
+  "homepage": "https://github.com/Suvendu97/codeile#readme"
 }

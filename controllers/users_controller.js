@@ -1,13 +1,29 @@
 const User = require('../models/user');
 
 module.exports.profile = function(req, res) {
-    //res.end('<h1>User Profile</h1>');
-    return res.render('users', {
-        title : "Users"
-    });
+    // //res.end('<h1>User Profile</h1>');
+    // return res.render('users', {
+    //     title : "User Profile"
+    // });
+    if(req.cookies.user_id) {
+        User.findById(req.cookies.user_id, function(err, user) {
+            if(user) {
+                //if user is found send the user to the user page (views-> user.ejs)
+                return res.render('users', {
+                    title : "User Profile",
+                    user: user
+                })
+            } else {
+                return res.redirect('/users/sign-in');
+            }
+            
+        });
+    } else {
+        return res.redirect('/users/sign-in');
+    }
 }
 
-//render the sign up page
+//render the sign up page when SignUp method called
 module.exports.signUp = function(req, res) {
     return res.render('user_sign_up', {
         title: "Codeial | Sign Up"
@@ -47,6 +63,36 @@ module.exports.create = function(req, res) {
 
 //sign in and create a season for the user
 module.exports.createSession = function(req, res) {
-    return res.redirect('/');
+    //steps to suthenticate
+    // find the use
+    User.findOne({email: req.body.email}, function(err, user) {
+        if(err) {console.log('Error in finding user in signing in'); return}
+        //handle user found
+        if(user) {
+            //handle password which don't match
+            if(user.password != req.body.password) {
+                return res.redirect('back');
+            }
+            //handle session creation
+            res.cookie('user_id', user.id);
+            return res.redirect('/users/profile');
+        } else {
+            //handle user not found
+            return res.redirect('back');
+        }
+    });
 
+}
+
+//sign out
+module.exports.destroySession = function(req, res){
+    req.logout(); 
+    req.flash('success', 'You have logged out!');
+
+    return res.redirect('/');
+}
+
+module.exports.destroySession=function(req, res) {
+    res.clearCookie('user_id');
+    return res.redirect('/');
 }
