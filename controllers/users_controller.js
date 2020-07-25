@@ -95,12 +95,12 @@ module.exports.createSession = function(req, res) {
 //sign out
 module.exports.destroySession = function(req, res){
     req.logout(); 
-    req.flash('success', 'You have logged out!');
+    // req.flash('success', 'You have logged out!');
 
     return res.redirect('/');
 }
 
-module.exports.destroySession=function(req, res) {
-    res.clearCookie('user_id');
-    return res.redirect('/');
-}
+// module.exports.destroySession=function(req, res) {
+//     res.clearCookie('user_id');
+//     return res.redirect('/');
+// }

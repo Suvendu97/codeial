@@ -19,6 +19,7 @@ router.post('/create-session', passport.authenticate(
     {failureRedirect: '/users/sign-in'},
 ), usersController.createSession)
 
+
 // //setting up the path for create-session(in user_controller sign in section)
 // router.post('/create-session', usersController.createSession);
 
