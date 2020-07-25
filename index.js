@@ -8,6 +8,10 @@ const expressLayouts = require('express-ejs-layouts');
 
 //import mongoose.js to use the mongoDB database
 const db = require('./config/mongoose');
+//used for session cookie
+const session = require('express-session');
+const passport = require('passport');
+const passportLocal = require('./config/passport-local-strategy');
 
 app.use(express.urlencoded());
 
@@ -22,15 +26,29 @@ app.use(expressLayouts);
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
 
-//use express router
-//any request comes in, it will send that to routes index.js
-app.use('/',require('./routes'));
-
 
 //setup the view engine
 app.set('view engine', 'ejs');
 // lookout for views in views folder 
 app.set('views', './views');
+
+app.use(session( {
+    name: 'codeial',
+    // ToDO change the secret before deployment in production mode
+    secret:'blaSomething',
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+        maxAge: (1000 * 60 * 100)
+    }
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+//use express router
+//any request comes in, it will send that to routes index.js
+app.use('/',require('./routes'));
 
 app.listen(port, function(err) {
     if(err) {

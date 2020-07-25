@@ -47,6 +47,6 @@ module.exports.create = function(req, res) {
 
 //sign in and create a season for the user
 module.exports.createSession = function(req, res) {
-    // ToDo later
+    return res.redirect('/');
 
 }
