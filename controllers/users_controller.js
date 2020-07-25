@@ -25,6 +25,10 @@ module.exports.profile = function(req, res) {
 
 //render the sign up page when SignUp method called
 module.exports.signUp = function(req, res) {
+    // if already authenticated, redirect to profile page it means if the user is authenticated he can't access sign-in or sign-up page
+    if(req.isAuthenticated()) {
+       return res.redirect('/users/profile');
+    }
     return res.render('user_sign_up', {
         title: "Codeial | Sign Up"
     })
@@ -32,6 +36,10 @@ module.exports.signUp = function(req, res) {
 
 //render the sign in page
 module.exports.signIn = function(req, res) {
+    // if already authenticated, redirect to profile page it means if the user is authenticated he can't access sign-in or sign-up page
+    if(req.isAuthenticated()) {
+        return res.redirect('/users/profile');
+    }
     return res.render('user_sign_in', {
         title: "Codeial | Sign In"
     })

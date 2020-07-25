@@ -46,6 +46,8 @@ app.use(session( {
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(passport.setAuthenticatedUser);
+
 //use express router
 //any request comes in, it will send that to routes index.js
 app.use('/',require('./routes'));
