@@ -11,4 +11,5 @@ router.use('/users', require('./users'));
 // so it will require address file in this same folder
 router.use('/address',require('./address'));
 
+router.use('/posts', require('./posts'));
 module.exports = router;
