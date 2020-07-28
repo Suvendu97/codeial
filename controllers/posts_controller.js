@@ -1,6 +1,7 @@
 const Post = require('../models/post');
 // const user = require('../models/user');
 
+// to create a post in DB
 module.exports.create = function(req, res) {
   
  Post.create({
