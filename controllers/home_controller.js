@@ -17,7 +17,7 @@ module.exports.home = function(req, res) {
     // finding all the post and populating user of each post, after that I'm doing call back
     Post.find({}).populate('user').exec(function(err, posts){
         return res.render('home', {
-            title : "Codeial | Home",
+            title : "Codeial | Home",   // these are response locals we can only access in font page template 
             posts: posts
         });
     })
