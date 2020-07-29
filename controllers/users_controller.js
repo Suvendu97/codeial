@@ -16,6 +16,16 @@ module.exports.profile = function(req, res) {
     }); 
 }
 
+module.exports.update = function(req, res){
+    if(req.user.id == req.params.id){
+        User.findByIdAndUpdate(req.params.id, req.body, function(err, user) {
+            return res.redirect('back');
+        });
+    } else {
+        return res.status(401).send('Unauthorized');
+    }
+}
+
 //render the sign up page when SignUp method called
 module.exports.signUp = function(req, res) {
     // if already authenticated, redirect to profile page it means if the user is authenticated he can't access sign-in or sign-up page

@@ -6,6 +6,7 @@ const usersController = require('../controllers/users_controller');
 
 //when getting /profile in the url we are going to  profile func of user_controller.js file
 router.get('/profile/:id', passport.checkAuthentication, usersController.profile);
+router.post('/update/:id', passport.checkAuthentication, usersController.update);
 
 router.get('/sign-up', usersController.signUp);
 router.get('/sign-in', usersController.signIn);
