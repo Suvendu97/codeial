@@ -24,10 +24,15 @@ module.exports.home = function(req, res) {
         }
     })
     .exec(function(err, posts){
-        return res.render('home', {
-            title : "Codeial | Home",   // these are response locals we can only access in font page template 
-            posts: posts
+
+        User.find({}, function(err, users) {
+            return res.render('home', {
+                title : "Codeial | Home",   // these are response locals we can only access in font page template 
+                posts: posts,
+                all_users: users
+            });
         });
+    
     })
     
 }
