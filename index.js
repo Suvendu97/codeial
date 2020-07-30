@@ -15,6 +15,8 @@ const passportLocal = require('./config/passport-local-strategy');
 // store the session info even when the server restarts it remains in db so that  signed in user don't get signed out in case the server restarts
 const MongoStore = require('connect-mongo')(session);
 const sassMiddleware = require('node-sass-middleware');
+const flash = require('connect-flash');
+const customMware = require('./config/middleware');
 
 app.use(sassMiddleware( {
     src: './assets/scss',
@@ -66,10 +68,16 @@ app.use(session( {
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 app.use(passport.setAuthenticatedUser);
 
 //use express router
 //any request comes in, it will send that to routes index.js
+
+
+app.use(flash());
+app.use(customMware.setFlash);
+
 app.use('/',require('./routes'));
 
 app.listen(port, function(err) {
