@@ -17,6 +17,7 @@ module.exports.home = async function(req, res) {
     // finding all the post and populating user of each post, after that I'm doing call back
     try {
         let posts = await Post.find({})
+        .sort('-createdAt')
         .populate('user')
         .populate({        //preloading two models, 1.comments and user of the comments
             path: 'comments',

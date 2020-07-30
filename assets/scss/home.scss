@@ -2,9 +2,11 @@
 #home-container{
     display: flex;
 
+
     #feed-posts{
         width: 70%;
         padding: 10px;
+        min-height: 700px;
     }
 
     #user-friends{
@@ -12,7 +14,7 @@
         padding: 10px;
         border-left: 1px solid lightgrey;
         // height: 100%;
-        min-height: 100%;
+        // min-height: 100px;
        
     }
 }
