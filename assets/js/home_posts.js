@@ -71,6 +71,7 @@
         });
     }
 
-    createPost();
+    createPost(); 
+    // see this
 }
 

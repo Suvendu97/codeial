@@ -15,33 +15,29 @@ module.exports.home = async function(req, res) {
     // });
 
     // finding all the post and populating user of each post, after that I'm doing call back
-    try {
-        let posts = await Post.find({})
-        .sort('-createdAt')
-        .populate('user')
-        .populate({        //preloading two models, 1.comments and user of the comments
-            path: 'comments',
-            populate: {
-                path:'user'
-            }
-        });
-        // .exec(function(err, posts){
+    try{
+        // populate the user of each post
+       let posts = await Post.find({})
+       .sort('-createdAt')
+       .populate('user')
+       .populate({
+           path: 'comments',
+           populate: {
+               path: 'user'
+           }
+       });
+   
+       let users = await User.find({});
 
-            
-        
-        // })
-        let users = await User.find({});
-        
-        return res.render('home', {
-            title : "Codeial | Home",   // these are response locals we can only access in font page template 
-            posts: posts,
-            all_users: users
-        });
+       return res.render('home', {
+           title: "Codeial | Home",
+           posts:  posts,
+           all_users: users
+       });
 
-    } catch(err) {
-        console.log('Error', err);
-        return;
-    }
-
-    
+   }catch(err){
+       console.log('Error', err);
+       return;
+   }
+  
 }
