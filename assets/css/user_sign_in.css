@@ -1,0 +1,19 @@
+body {
+  background-color: #aabdac; }
+  body #sign-in-container {
+    margin-left: 100px;
+    display: flex; }
+    body #sign-in-container #simple-sign-in {
+      flex: 40%; }
+      body #sign-in-container #simple-sign-in input {
+        width: 300px; }
+      body #sign-in-container #simple-sign-in #submit {
+        background-color: #2b57aa;
+        color: white;
+        height: 30px; }
+    body #sign-in-container #google-sign-in {
+      flex: 60%; }
+      body #sign-in-container #google-sign-in p {
+        margin-top: 100px;
+        color: #341cc0;
+        margin-right: 585px; }
