@@ -31,6 +31,7 @@ module.exports.update = async function(req, res){
 
     if(req.user.id == req.params.id) {
         try {
+
             let user = await User.findById(req.params.id);
             User.uploadedAvatar(req, res, function(err){
                 if(err) { console.log('****multer Error: ', err)}
@@ -147,3 +148,4 @@ module.exports.destroySession = function(req, res){
 //     res.clearCookie('user_id');
 //     return res.redirect('/');
 // }
+
